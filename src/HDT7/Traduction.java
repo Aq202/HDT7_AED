@@ -1,10 +1,10 @@
 package HDT7;
 
-public class Definitions {
+public class Traduction {
 	
 	private String spanish, english, french;
 	
-	public Definitions(String spanish, String english, String french) {
+	public Traduction(String spanish, String english, String french) {
 		
 		this.spanish = spanish;
 		this.english = english;

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import HDT7.BinarySearchTree;
 import HDT7.CompareWord;
-import HDT7.Definitions;
+import HDT7.Traduction;
 import HDT7.DictionaryTraversal;
 import HDT7.FileController;
 import HDT7.StoreDictionaryTraversal;
@@ -18,48 +18,33 @@ class BinaryTreeTests {
 	@Test
 	void insertTest() {
 		
-		var file = new FileController(FileController.DICTIONARY_PATH);
-		
-		try {
-			file.clearFile();
-		} catch (IOException e1) {
-			fail(e1);
-		}
 
-		BinarySearchTree<String, Definitions> englishDictionary = new BinarySearchTree<String, Definitions>(
+		BinarySearchTree<String, Traduction> englishDictionary = new BinarySearchTree<String, Traduction>(
 				new CompareWord());
 
-		englishDictionary.insert("house", new Definitions("casa", "house", "loger"));
-		englishDictionary.insert("woman", new Definitions("mujer", "woman", "femme"));
-		englishDictionary.insert("town", new Definitions("pueblo", "town", "ville"));
-		englishDictionary.insert("dog", new Definitions("perro", "dog", "chien"));
-		englishDictionary.insert("computer", new Definitions("computadora", "computer", "ordinateur"));
+		englishDictionary.insert("house", new Traduction("casa", "house", "loger"));
+		englishDictionary.insert("woman", new Traduction("mujer", "woman", "femme"));
+		englishDictionary.insert("town", new Traduction("pueblo", "town", "ville"));
+		englishDictionary.insert("dog", new Traduction("perro", "dog", "chien"));
+		englishDictionary.insert("computer", new Traduction("computadora", "computer", "ordinateur"));
 
-		var dictionaryTraversal = new StoreDictionaryTraversal();
-
-		try {
-			englishDictionary.inOrder(dictionaryTraversal);
-		} catch (IOException e) {
-			fail("El archivo diccionario.txt no existe.");
-		} catch (Exception e) {
-			fail(e);
-		}
+		assertEquals(5, englishDictionary.count());
 
 	}
 
 	@Test
 	void findTest() {
-		BinarySearchTree<String, Definitions> englishDictionary = new BinarySearchTree<String, Definitions>(
+		BinarySearchTree<String, Traduction> englishDictionary = new BinarySearchTree<String, Traduction>(
 				new CompareWord());
 
-		englishDictionary.insert("house", new Definitions("casa", "house", "loger"));
-		englishDictionary.insert("woman", new Definitions("mujer", "woman", "femme"));
-		englishDictionary.insert("town", new Definitions("pueblo", "town", "ville"));
-		englishDictionary.insert("dog", new Definitions("perro", "dog", "chien"));
+		englishDictionary.insert("house", new Traduction("casa", "house", "loger"));
+		englishDictionary.insert("woman", new Traduction("mujer", "woman", "femme"));
+		englishDictionary.insert("town", new Traduction("pueblo", "town", "ville"));
+		englishDictionary.insert("dog", new Traduction("perro", "dog", "chien"));
 		
 		
-		assertEquals(true, englishDictionary.containsKey("house"));
-		assertEquals(false, englishDictionary.containsKey("chien"));
+		assertEquals("casa", englishDictionary.find("house").getSpanish());
+		assertEquals(null, englishDictionary.find("chien"));
 	}
 
 }

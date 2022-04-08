@@ -39,10 +39,7 @@ public class FileController {
 		File doc = new File(filePath);
 
 		File file = new File(filePath);
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-
+		
 		BufferedReader obj = new BufferedReader(new FileReader(doc, StandardCharsets.UTF_8));
 		ArrayList<String> linesList = new ArrayList<String>();
 
@@ -66,9 +63,6 @@ public class FileController {
 	public void writeLine(String text) throws IOException {
 
 		File file = new File(filePath);
-		if (!file.exists()) {
-			file.createNewFile();
-		}
 
 		FileWriter fw = new FileWriter(file, true);
 		BufferedWriter bw = new BufferedWriter(fw);
@@ -89,9 +83,6 @@ public class FileController {
 	 */
 	public void writeFile(String text) throws IOException {
 		File file = new File(filePath);
-		if (!file.exists()) {
-			file.createNewFile();
-		}
 
 		FileWriter fw = new FileWriter(file);
 
@@ -101,7 +92,11 @@ public class FileController {
 	}
 
 	public void clearFile() throws IOException {
-
 		writeFile("");
+	}
+	
+	public boolean exists() {
+		File file = new File(filePath);
+		return file.exists();
 	}
 }
