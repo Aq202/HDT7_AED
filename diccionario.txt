@@ -1,0 +1,5 @@
+computer,computadora,ordinateur
+dog,perro,chien
+house,casa,loger
+town,pueblo,ville
+woman,mujer,femme

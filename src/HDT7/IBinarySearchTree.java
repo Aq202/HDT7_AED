@@ -12,21 +12,23 @@ import java.util.ArrayList;
 public interface IBinarySearchTree<K, V> {
 
 	void insert(K id, V value);
-	
+
 	V delete(K id);
-	
+
 	V find(K id);
-	
+
 	int count();
-	
+
 	boolean isEmpty();
 	
+	boolean containsKey(K id);
+
 	ArrayList<V> getElements();
-	
-	void inOrder(ITreeTraversal<V> traversal);
-	
-	void preOrder(ITreeTraversal<V> traversal);
-	
-	void postOrder(ITreeTraversal<V> traversal);
-	
+
+	void inOrder(ITreeTraversal<K, V> traversal) throws Exception;
+
+	void preOrder(ITreeTraversal<K, V> traversal) throws Exception;
+
+	void postOrder(ITreeTraversal<K, V> traversal) throws Exception;
+
 }
