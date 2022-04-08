@@ -15,7 +15,8 @@ public class StoreDictionaryTraversal implements ITreeTraversal<String, Definiti
 	@Override
 	public void Walk(String key, Definitions value) throws IOException {
 		
-		FileController.writeLine(value.getEnglish() + "," + value.getSpanish() + "," + value.getFrench());
+		var file = new FileController(FileController.DICTIONARY_PATH);
+		file.writeLine(value.getEnglish() + "," + value.getSpanish() + "," + value.getFrench());
 		
 	}
 	

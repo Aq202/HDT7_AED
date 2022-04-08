@@ -18,19 +18,27 @@ import java.util.ArrayList;
  */
 
 public class FileController {
-	public static final String PATH = System.getProperty("user.dir") + "\\diccionario.txt";
-
+	
+	public static final String DICTIONARY_PATH = System.getProperty("user.dir") + "\\diccionario.txt";
+	public static final String TEXT_PATH = System.getProperty("user.dir") + "\\texto.txt";
+	
+	private String filePath;
+	
+	public FileController(String filePath) {
+		this.filePath = filePath;
+	}
+	
 	/**
 	 * Metodo que se encarga de obtener todas las filas del archivo diccionario.txt
 	 * 
 	 * @return String[]. Array con cada una de las filas de texto por casilla.
 	 * @throws IOException
 	 */
-	public static String[] readFile() throws IOException, FileNotFoundException {
+	public String[] readFile() throws IOException, FileNotFoundException {
 
-		File doc = new File(PATH);
+		File doc = new File(filePath);
 
-		File file = new File(PATH);
+		File file = new File(filePath);
 		if (!file.exists()) {
 			file.createNewFile();
 		}
@@ -55,9 +63,9 @@ public class FileController {
 	 * @param text. Contenido del archivo
 	 * @throws IOException
 	 */
-	public static void writeLine(String text) throws IOException {
+	public void writeLine(String text) throws IOException {
 
-		File file = new File(PATH);
+		File file = new File(filePath);
 		if (!file.exists()) {
 			file.createNewFile();
 		}
@@ -79,8 +87,8 @@ public class FileController {
 	 * @param text. Contenido del archivo
 	 * @throws IOException
 	 */
-	public static void writeFile(String text) throws IOException {
-		File file = new File(PATH);
+	public void writeFile(String text) throws IOException {
+		File file = new File(filePath);
 		if (!file.exists()) {
 			file.createNewFile();
 		}
@@ -92,7 +100,7 @@ public class FileController {
 
 	}
 
-	public static void clearFile() throws IOException {
+	public void clearFile() throws IOException {
 
 		writeFile("");
 	}

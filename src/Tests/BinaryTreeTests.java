@@ -18,8 +18,10 @@ class BinaryTreeTests {
 	@Test
 	void insertTest() {
 		
+		var file = new FileController(FileController.DICTIONARY_PATH);
+		
 		try {
-			FileController.clearFile();
+			file.clearFile();
 		} catch (IOException e1) {
 			fail(e1);
 		}
