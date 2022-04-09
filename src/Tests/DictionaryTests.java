@@ -19,7 +19,7 @@ class DictionaryTests {
 		
 		try {
 			
-			var dict = new Dictionary();
+			var dict = new Dictionary(FileController.PATH + "dictionaryTest.txt");
 			dict.newWord("noise", "ruido", "bruit");
 			
 						
@@ -28,7 +28,7 @@ class DictionaryTests {
 
 			
 		}catch(Exception ex) {
-			
+			fail(ex);
 		}
 		
 	}
@@ -37,7 +37,7 @@ class DictionaryTests {
 	void translateWordTest() {
 		
 		try {
-			var dict = new Dictionary();
+			var dict = new Dictionary(FileController.PATH + "dictionaryTest.txt");
 			
 			dict.newWord("house", "casa", "maison");
 			
@@ -48,8 +48,7 @@ class DictionaryTests {
 		} catch (FileNotFoundException e) {
 			fail("Catch: " + e);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			fail(e);
 		};
 	}
 	
@@ -61,7 +60,7 @@ class DictionaryTests {
 			
 			dict.newWord("woman", "mujer", "afds");
 			dict.newWord("homework", "tarea", "maison");
-			dict.newWord("town", "pueblo", "maison");
+			dict.newWord("town", "pueblo", "ville");
 			
 			assertEquals("*The* mujer *asked* *me* *to* *do* *my* tarea *about* *my* pueblo.", dict.translateText("textTest"));
 			

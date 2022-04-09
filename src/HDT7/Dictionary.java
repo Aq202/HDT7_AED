@@ -5,6 +5,7 @@ import java.io.IOException;
 
 /**
  * Clase que se encarga de manejar un diccionario de ingles, espanol y frances.
+ * 
  * @author Diego Morales
  *
  */
@@ -17,7 +18,9 @@ public class Dictionary {
 
 	/**
 	 * Metodo constructor de la clase.
-	 * @param dictionaryFilePath String. Ruta del archivo que contine las asociaciones de palabras.
+	 * 
+	 * @param dictionaryFilePath String. Ruta del archivo que contine las
+	 *                           asociaciones de palabras.
 	 * @throws Exception
 	 */
 	public Dictionary(String dictionaryFilePath) throws Exception {
@@ -36,6 +39,7 @@ public class Dictionary {
 
 	/**
 	 * Metodo constructor de la clase
+	 * 
 	 * @throws Exception
 	 */
 	public Dictionary() throws Exception {
@@ -43,7 +47,9 @@ public class Dictionary {
 	}
 
 	/**
-	 * Se encarga de obtener el contenido almacenado en el archivo y cargarlo al programa.
+	 * Se encarga de obtener el contenido almacenado en el archivo y cargarlo al
+	 * programa.
+	 * 
 	 * @throws Exception
 	 */
 	private void loadDictionary() throws Exception {
@@ -52,26 +58,30 @@ public class Dictionary {
 
 		for (String line : content) {
 
-			// english, spanish, french
-			String[] words = line.split(",");
+			if (line.trim().length() > 0) {
+				// english, spanish, french
+				String[] words = line.split(",");
 
-			try {
+				try {
 
-				newWord(words[0], words[1], words[2]);
+					newWord(words[0], words[1], words[2]);
 
-			} catch (Exception ex) {
-				throw new Exception("El diccionario del archivo no es valido.");
+				} catch (Exception ex) {
+					System.out.println(ex);
+					throw new Exception("El diccionario del archivo no es valido.");
+				}
+
 			}
-
 		}
 
 	}
 
 	/**
 	 * Permite agregar una nueva traduccion al diccionario.
+	 * 
 	 * @param english String. Traduccion en ingles.
 	 * @param spanish String. Traduccion en espanol.
-	 * @param french String. Traduccion en frances.
+	 * @param french  String. Traduccion en frances.
 	 * @throws Exception
 	 */
 	public void newWord(String english, String spanish, String french) throws Exception {
@@ -88,6 +98,7 @@ public class Dictionary {
 
 	/**
 	 * Permite buscar una palabra en ambos diccionarios.
+	 * 
 	 * @param word String. Palabra en ingles o frances.
 	 * @return Traduction.
 	 * @throws Exception
@@ -104,6 +115,7 @@ public class Dictionary {
 
 	/**
 	 * Se encarga de buscar y eliminar una palabra en ambos diccionarios.
+	 * 
 	 * @param word String. Palabra en ingles o frances.
 	 * @throws Exception
 	 */
@@ -120,10 +132,11 @@ public class Dictionary {
 
 	/**
 	 * Se encarga de actualizar el contenido de una traduccion determinada.
+	 * 
 	 * @param currentWord String. Palabra a actualizar en ingles o frances.
-	 * @param english String. Nueva traduccion en ingles.
-	 * @param spanish String. Nueva traduccion en espanol.
-	 * @param french String. Nueva traduccion en frances.
+	 * @param english     String. Nueva traduccion en ingles.
+	 * @param spanish     String. Nueva traduccion en espanol.
+	 * @param french      String. Nueva traduccion en frances.
 	 * @throws Exception
 	 */
 	public void updateWord(String currentWord, String english, String spanish, String french) throws Exception {
@@ -135,6 +148,7 @@ public class Dictionary {
 
 	/**
 	 * Permite obtener la traduccion en espanol de una determinada palabra.
+	 * 
 	 * @param word String. Palabra en ingles o frances a traducir.
 	 * @return
 	 */
@@ -154,7 +168,10 @@ public class Dictionary {
 
 	/**
 	 * Se encarga de cargar el contenido de un archivo y traducir su contenido.
-	 * @param fileName Nombre del archivo contenido en la ruta de ejecucion actual. Solo se debe de adjuntar el nombre del archivo sin la extension .txt
+	 * 
+	 * @param fileName Nombre del archivo contenido en la ruta de ejecucion actual.
+	 *                 Solo se debe de adjuntar el nombre del archivo sin la
+	 *                 extension .txt
 	 * @return String. Traduccion completa.
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -196,6 +213,7 @@ public class Dictionary {
 
 	/**
 	 * Permite determinar si una palabra existe en alguno de los diccionarios.
+	 * 
 	 * @param word Palabra en ingles o frances.
 	 * @return boolean.
 	 */
@@ -209,6 +227,7 @@ public class Dictionary {
 
 	/**
 	 * Retorna el contenido del diccionario en ingles inorder.
+	 * 
 	 * @return String.
 	 * @throws Exception
 	 */
@@ -231,6 +250,7 @@ public class Dictionary {
 
 	/**
 	 * Retorna el contenido del diccionario en espanol inorder.
+	 * 
 	 * @return String.
 	 * @throws Exception
 	 */
@@ -252,15 +272,16 @@ public class Dictionary {
 	}
 
 	/**
-	 * Se encarga de sobreescribir el contenido del archivo del diccionario con la data generada en la ejecucion actual del programa.
+	 * Se encarga de sobreescribir el contenido del archivo del diccionario con la
+	 * data generada en la ejecucion actual del programa.
+	 * 
 	 * @throws Exception
 	 */
 	public void updateDictionaryFile() throws Exception {
 
-		
 		StoreDictionaryTraversal traversal = new StoreDictionaryTraversal(dictionaryFile);
-		dictionaryFile.clearFile(); //borrar contenido del archivo
-		englishDictionary.inOrder(traversal); //llenar archivo 
+		dictionaryFile.clearFile(); // borrar contenido del archivo
+		englishDictionary.inOrder(traversal); // llenar archivo
 
 	}
 

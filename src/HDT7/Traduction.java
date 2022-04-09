@@ -24,7 +24,7 @@ public class Traduction {
 
 	/**
 	 * Metodo getter
-	 * @return
+	 * @return String
 	 */
 	public String getSpanish() {
 		return spanish;
@@ -32,7 +32,7 @@ public class Traduction {
 
 	/**
 	 * Metodo getter
-	 * @return
+	 * @return String
 	 */
 	public String getEnglish() {
 		return english != null ? english.trim(): null;
@@ -40,7 +40,7 @@ public class Traduction {
 
 	/**
 	 * Metodo getter
-	 * @return
+	 * @return String
 	 */
 	public String getFrench() {
 		return french != null ? french.trim(): null;
