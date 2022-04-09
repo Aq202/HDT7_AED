@@ -1,7 +1,6 @@
-but,pero,mais
+house,casa, loger
 dog,perro,chien
-house,casa,loger
-tareaiton,tarea,nose
-town,pueblo,ville
+homework,tarea,devoirs
 woman,mujer,femme
+town,pueblo,ville
 yes,si,Oui
