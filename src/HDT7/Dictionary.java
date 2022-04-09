@@ -2,10 +2,12 @@ package HDT7;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+/**
+ * Clase que se encarga de manejar un diccionario de ingles, espanol y frances.
+ * @author Diego Morales
+ *
+ */
 public class Dictionary {
 
 	private BinarySearchTree<String, Traduction> englishDictionary;
@@ -13,6 +15,11 @@ public class Dictionary {
 
 	private FileController dictionaryFile;
 
+	/**
+	 * Metodo constructor de la clase.
+	 * @param dictionaryFilePath String. Ruta del archivo que contine las asociaciones de palabras.
+	 * @throws Exception
+	 */
 	public Dictionary(String dictionaryFilePath) throws Exception {
 
 		CompareWord comparator = new CompareWord();
@@ -27,11 +34,19 @@ public class Dictionary {
 		loadDictionary();
 	}
 
+	/**
+	 * Metodo constructor de la clase
+	 * @throws Exception
+	 */
 	public Dictionary() throws Exception {
 		this(FileController.DICTIONARY_PATH);
 	}
 
-	public void loadDictionary() throws Exception {
+	/**
+	 * Se encarga de obtener el contenido almacenado en el archivo y cargarlo al programa.
+	 * @throws Exception
+	 */
+	private void loadDictionary() throws Exception {
 
 		String[] content = dictionaryFile.readFile();
 
@@ -52,6 +67,13 @@ public class Dictionary {
 
 	}
 
+	/**
+	 * Permite agregar una nueva traduccion al diccionario.
+	 * @param english String. Traduccion en ingles.
+	 * @param spanish String. Traduccion en espanol.
+	 * @param french String. Traduccion en frances.
+	 * @throws Exception
+	 */
 	public void newWord(String english, String spanish, String french) throws Exception {
 
 		Traduction traduction = new Traduction(spanish, english, french);
@@ -64,6 +86,12 @@ public class Dictionary {
 		frenchDictionary.insert(traduction.getFrench(), traduction);
 	}
 
+	/**
+	 * Permite buscar una palabra en ambos diccionarios.
+	 * @param word String. Palabra en ingles o frances.
+	 * @return Traduction.
+	 * @throws Exception
+	 */
 	private Traduction searchWord(String word) throws Exception {
 
 		Traduction traduction = englishDictionary.find(word);
@@ -74,6 +102,11 @@ public class Dictionary {
 
 	}
 
+	/**
+	 * Se encarga de buscar y eliminar una palabra en ambos diccionarios.
+	 * @param word String. Palabra en ingles o frances.
+	 * @throws Exception
+	 */
 	public void deleteWord(String word) throws Exception {
 
 		Traduction traduction = searchWord(word);
@@ -85,6 +118,14 @@ public class Dictionary {
 		frenchDictionary.delete(traduction.getFrench());
 	}
 
+	/**
+	 * Se encarga de actualizar el contenido de una traduccion determinada.
+	 * @param currentWord String. Palabra a actualizar en ingles o frances.
+	 * @param english String. Nueva traduccion en ingles.
+	 * @param spanish String. Nueva traduccion en espanol.
+	 * @param french String. Nueva traduccion en frances.
+	 * @throws Exception
+	 */
 	public void updateWord(String currentWord, String english, String spanish, String french) throws Exception {
 
 		deleteWord(currentWord);
@@ -92,6 +133,11 @@ public class Dictionary {
 
 	}
 
+	/**
+	 * Permite obtener la traduccion en espanol de una determinada palabra.
+	 * @param word String. Palabra en ingles o frances a traducir.
+	 * @return
+	 */
 	public String translateWord(String word) {
 
 		try {
@@ -106,6 +152,13 @@ public class Dictionary {
 
 	}
 
+	/**
+	 * Se encarga de cargar el contenido de un archivo y traducir su contenido.
+	 * @param fileName Nombre del archivo contenido en la ruta de ejecucion actual. Solo se debe de adjuntar el nombre del archivo sin la extension .txt
+	 * @return String. Traduccion completa.
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public String translateText(String fileName) throws FileNotFoundException, IOException {
 
 		var file = new FileController(FileController.PATH + fileName + ".txt");
@@ -141,6 +194,11 @@ public class Dictionary {
 		return result.trim();
 	}
 
+	/**
+	 * Permite determinar si una palabra existe en alguno de los diccionarios.
+	 * @param word Palabra en ingles o frances.
+	 * @return boolean.
+	 */
 	public boolean containsWord(String word) {
 
 		if (englishDictionary.containsKey(word))
@@ -149,6 +207,11 @@ public class Dictionary {
 
 	}
 
+	/**
+	 * Retorna el contenido del diccionario en ingles inorder.
+	 * @return String.
+	 * @throws Exception
+	 */
 	public String inOrderByEnglishTraduction() throws Exception {
 
 		DictionaryTraversal traversal = new DictionaryTraversal();
@@ -166,6 +229,11 @@ public class Dictionary {
 
 	}
 
+	/**
+	 * Retorna el contenido del diccionario en espanol inorder.
+	 * @return String.
+	 * @throws Exception
+	 */
 	public String inOrderByFrenchTraduction() throws Exception {
 
 		DictionaryTraversal traversal = new DictionaryTraversal();
@@ -183,6 +251,10 @@ public class Dictionary {
 
 	}
 
+	/**
+	 * Se encarga de sobreescribir el contenido del archivo del diccionario con la data generada en la ejecucion actual del programa.
+	 * @throws Exception
+	 */
 	public void updateDictionaryFile() throws Exception {
 
 		

@@ -2,6 +2,11 @@ package HDT7;
 
 import java.util.ArrayList;
 
+/**
+ * Permite especificar las acciones a ejecutar en el ordenamiento del arbol.
+ * @author Diego Morales
+ *
+ */
 public class DictionaryTraversal implements ITreeTraversal<String, Traduction>{
 	
 	
@@ -17,6 +22,10 @@ public class DictionaryTraversal implements ITreeTraversal<String, Traduction>{
 		associations.add(value);		
 	}
 	
+	/**
+	 * Retorna el contenido ordenado del diccionario.
+	 * @return
+	 */
 	public ArrayList<Traduction> getAssociations(){
 		return associations;
 	}

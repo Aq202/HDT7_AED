@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
- * @author MAAG
+ * Clase elaborada en el curso Algoritmos y Estructuras de Datos UVG.
+ * @author MOISES ANTONIO ALONSO GONZALEZ
  *
  */
 public class BinarySearchTree<K, V> implements IBinarySearchTree<K, V> {

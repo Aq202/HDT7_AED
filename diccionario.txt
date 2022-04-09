@@ -1,3 +1,4 @@
+but,pero,mais
 dog,perro,chien
 house,casa,loger
 tareaiton,tarea,nose

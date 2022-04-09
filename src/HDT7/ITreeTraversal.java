@@ -6,7 +6,8 @@ package HDT7;
 import java.io.IOException;
 
 /**
- * @author MAAG
+ * Clase elaborada en el curso Algoritmos y Estructuras de Datos UVG.
+ * @author MOISES ANTONIO ALONSO GONZALEZ
  *
  */
 public interface ITreeTraversal<K,V> {

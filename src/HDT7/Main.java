@@ -50,6 +50,10 @@ public class Main {
 		return sc.nextLine();
 	}
 
+	/**
+	 * Metodo principal de la clase
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);

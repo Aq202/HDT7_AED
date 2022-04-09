@@ -91,10 +91,18 @@ public class FileController {
 
 	}
 
+	/**
+	 * Vacia el contenido del archivo.
+	 * @throws IOException
+	 */
 	public void clearFile() throws IOException {
 		writeFile("");
 	}
 	
+	/**
+	 * Determina si el archivo con la ruta especificada existe.
+	 * @return
+	 */
 	public boolean exists() {
 		File file = new File(filePath);
 		return file.exists();
