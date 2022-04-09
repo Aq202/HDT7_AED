@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DictionaryTraversal implements ITreeTraversal<String, Traduction>{
 	
 	
-	private ArrayList<String> associations;
+	private ArrayList<Traduction> associations;
 	
 	public DictionaryTraversal() {
 		associations = new ArrayList<>();
@@ -14,10 +14,10 @@ public class DictionaryTraversal implements ITreeTraversal<String, Traduction>{
 	@Override
 	public void Walk(String key, Traduction value) {
 		
-		associations.add(key + ", "  + value.getSpanish());		
+		associations.add(value);		
 	}
 	
-	public ArrayList<String> getAssociations(){
+	public ArrayList<Traduction> getAssociations(){
 		return associations;
 	}
 	

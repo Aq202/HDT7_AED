@@ -16,11 +16,11 @@ public class Traduction {
 	}
 
 	public String getEnglish() {
-		return english;
+		return english != null ? english.trim(): null;
 	}
 
 	public String getFrench() {
-		return french;
+		return french != null ? french.trim(): null;
 	}
 	
 	

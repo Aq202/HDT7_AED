@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class FileController {
 	
 	public static final String DICTIONARY_PATH = System.getProperty("user.dir") + "\\diccionario.txt";
-	public static final String TEXT_PATH = System.getProperty("user.dir") + "\\texto.txt";
+	public static final String PATH = System.getProperty("user.dir") + "\\";
 	
 	private String filePath;
 	

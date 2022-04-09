@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import org.junit.jupiter.api.Test;
 
 import HDT7.Dictionary;
+import HDT7.FileController;
 
 class DictionaryTests {
 	
@@ -56,9 +57,13 @@ class DictionaryTests {
 	void translateTextTest() {
 		
 		try {
-			var dict = new Dictionary();
+			var dict = new Dictionary(FileController.PATH + "dictionaryTest.txt");
 			
-			assertEquals("*The* mujer *asked* *me* *to* *do* *my* tarea *about* *my* pueblo.", dict.translateText());
+			dict.newWord("woman", "mujer", "afds");
+			dict.newWord("homework", "tarea", "maison");
+			dict.newWord("town", "pueblo", "maison");
+			
+			assertEquals("*The* mujer *asked* *me* *to* *do* *my* tarea *about* *my* pueblo.", dict.translateText("textTest"));
 			
 			
 		}catch(Exception ex) {

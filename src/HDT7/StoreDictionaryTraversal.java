@@ -6,8 +6,10 @@ import java.util.HashMap;
 public class StoreDictionaryTraversal implements ITreeTraversal<String, Traduction> {
 
 	private HashMap<String, String> associations;
+	private FileController file;
 	
-	public StoreDictionaryTraversal() {
+	public StoreDictionaryTraversal(FileController file) {
+		this.file = file;
 		associations = new HashMap<>();
 	}
 	
@@ -15,7 +17,6 @@ public class StoreDictionaryTraversal implements ITreeTraversal<String, Traducti
 	@Override
 	public void Walk(String key, Traduction value) throws IOException {
 		
-		var file = new FileController(FileController.DICTIONARY_PATH);
 		file.writeLine(value.getEnglish() + "," + value.getSpanish() + "," + value.getFrench());
 		
 	}
